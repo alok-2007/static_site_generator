@@ -1,0 +1,11 @@
+Pincodes/
+states/
+States_vill/
+urls/
+village_url/
+*.json
+villages/
+SiteMap_dir/
+*.xml
+sitemap/
+*.csv

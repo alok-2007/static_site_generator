@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Your DIGIPIN - Digital Address of Your Location</title>
+    <meta name="description" content="Get DIGIPIN of Your Location Instantly">
+    <meta name="keywords" content="digipin, digipin of my location, my digipin, digipin of my current location">
+    <link rel="canonical" href="https://digipin.searchpincode.in">
+    <meta name="robots" content="index, follow">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        body{
+            font-family: system-ui;
+            line-height: 1.5;
+        }
+        a{
+            text-decoration: none;
+        }
+        main{
+            width: 95%;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: clamp(1.2rem, 5vw, 1.7rem);
+            margin: 1%;
+        }
+        h2 {
+            font-size: clamp(0.7rem, 5vw, 1.2rem);
+        }
+        h3{
+            font-size: clamp(0.5rem, 5vw, 1rem);
+        }
+        header{
+            background-color: rgb(128, 8, 8);
+            color: white;
+            text-align: center;
+        }
+        #logo{
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 600;
+        }
+        #spinner {
+            display: none;
+            margin: 20px auto;
+            width: 40px;
+            height: 40px;
+            border: 5px solid #ccc;
+            border-top: 5px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(360deg);}
+        }
+        #digipin-btn {
+            width: 150px;
+            height: 100px;
+            border-radius: 50%;
+            font-size: 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin: 1% auto;
+            font-weight: 800;
+        }
+        .hero {
+            font-size: 2rem;
+            margin: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: green;
+        }
+        #result{
+            display: none;
+            width: 70%;
+            margin: 0 auto;
+            padding: 0.3rem;
+            line-height: 2;
+            border: 2px solid black;
+            border-radius: 8px;
+        }
+        button{
+            cursor: pointer;
+        }
+        .info-card{
+            border-left: 5px solid #3522e2;
+            border-radius: 8px;
+            padding: 0.3rem;
+            margin-top: 1rem;
+        }
+        ol{
+            margin-left: 1.5rem;
+        }
+        figure{
+            max-width: 400px;
+            display: block;
+            text-align: center;
+            margin: 5px auto;
+        }
+        .faq-section{
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .faq-section h2{
+            background-color: bisque;
+            font-size: clamp(0.7rem, 5vw, 1.4rem);
+            padding: 8px;
+            border-bottom: 2px solid black;
+        }
+        nav a {
+          display: block;
+          font-size: clamp(0.6rem, 5vw, 1.2rem);
+          padding: .2rem;
+          background-color: #860f0f;
+          color: #fff;
+          text-align: center;
+          margin: .2rem 0;
+        }
+        footer{
+            background: linear-gradient(#dcf8dd,#fd8787);
+        }
+        footer ul{
+            display: flex;
+            list-style: none;
+            gap: 12px;
+            font-size: 16px;
+            justify-content: center;
+        }
+        footer ul li a{
+            color: black;
+        }
+        #copyright{
+            font-size: 24px;
+            text-align: center;
+        }
+        #copy-notification{
+            display: none;
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgb(241, 29, 29);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is DIGIPIN different from PINCODE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unlike traditional PINCODEs that cover large postal areas and are manually assigned, a DIGIPIN is unique to each specific location - down to a few meters, enable pinpoint accuracy, making them ideal for logistics, e-commerce, emergency services and future-ready smart addressing systems."
+          }
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+    <header aria-label="Website header"><div id="logo">Know Your DIGIPIN</div></header>
+    <main>
+        <article>
+            <h1>DIGIPIN of my Current Location</h1>
+            <button id="digipin-btn" onclick="getdigipin()">Show my DIGIPIN</button>
+            <div id="spinner"></div>
+            <div id="result"></div>
+            <section class="info-card">
+              <h2>What is DIGIPIN?</h2>
+              <p>
+                DIGIPIN (Digital Postal Index Number) is a new digital addressing system that converts your exact location (latitude & longitude) into a unique and compact 10-character code. This code is easy to share, remember, and use—like a digital PIN code for your current location.
+              </p>
+              <figure>
+                    <img src="./images/what-is-digipin.png" alt="What is DIGIPIN" title="What is DIGIPIN" loading="lazy" style="max-width: 100%; height: auto;">
+                    <figcaption>What is DIGIPIN</figcaption>
+              </figure>
+            </section>
+            <section class="info-card">
+              <h2>Instructions to Get Your DIGIPIN</h2>
+              <p>Follow these simple steps to find your location's DIGIPin instantly:</p>
+              <ol>
+                <li>Click the "<strong>Show my DIGIPIN</strong>" button above.</li>
+                <li>When prompted by your browser, click <strong>"Allow"</strong> or <strong>"Yes"</strong> to share you location.</li>
+                <li>We'll use your coordinates to calculate your DIGIPIN and display it right here.</li>
+              </ol>
+            </section>
+            <section class="info-card">
+                <h2>How is DIGIPIN Calculated?</h2>
+                <p>DIGIPIN is generated using a 4x4 grid system applied recursively to the map of India:</p>
+                <ol>
+                    <li>
+                        India’s geographical bounds are divided into 4 rows × 4 columns.
+                        <figure>
+                            <img src="./images/digipin-bounding-box.webp" alt="digipin bounding on map" title="digipin bounding on map" loading="lazy" width="250" height="">
+                            <figcaption>DIGIPIN Bounding on map</figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        Based on your GPS location, the system picks a character from a DIGIPIN grid like:
+                        <figure>
+                            <img src="./images/digipin-bounding-on-map.png" alt="DIGIPIN grid layout" title="DIGIPIN grid layout" loading="lazy" width="300" height="">
+                            <figcaption>DIGIPIN grid layout</figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        The selected grid is subdivided again into 4x4 smaller cells.
+                        <figure>
+                            <img src="./images/digipin-repeats-subdivision.png" alt="digipin bounding on map" title="digipin bounding on map" loading="lazy" width="250" height="">
+                            <figcaption>DIGIPIN Bounding on map</figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        This process repeats 10 times, generating a unique string like: <span style="display: inline-block;margin: 5px auto;text-align: center;background-color: rgb(245, 228, 208);">4FK-PCP-KCK3</span>
+                    </li>
+                </ol>
+                <p>Each level zooms into your location with higher accuracy.</p>
+            </section>
+            <section class="info-card">
+                <h2>Who developed DIGIPIN?</h2>
+                <p>DIGIPIN (Digital Postal Index Number) was developed by the Department of Posts (India Post) in collaboration with IIT Hyderabad and the National Remote Sensing Centre (NRSC) of ISRO</p>
+            </section>
+            <section class="info-card">
+                <h2>How is DIGIPIN different from PINCODE?</h2>
+                <p>DIGIPIN is a precise digital address based on a 4x4 grid system, calculated using your exact latitude and longitude. Unlike traditional PINCODEs that cover large postal areas and are manually assigned, a DIGIPIN is unique to each specific location—down to a few meters. While PINCODEs are useful for broad delivery zones, DIGIPINs enable pinpoint accuracy, making them ideal for logistics, e-commerce, emergency services, and future-ready smart addressing systems.</p>
+                <figure>
+                    <img src="./images/how-is-digipin-different-from-pincode.png" alt="How is digipin different from pincode" title="How is digipin different from pincode" loading="lazy" style="max-width: 100%; height: auto;">
+                    <figcaption>How is digipin different from pincode</figcaption>
+                </figure>
+            </section>
+            <section class="info-card">
+                <h2>Whats are benefits of DIGIPIN?</h2>
+                <p>India has over 1.4 billion people and many places with similar names. Traditional pincodes cover large areas, making it hard to locate exact addresses.</p>
+                <p>DIGIPIN gives every location a unique digital code based on latitude and longitude. It helps in faster deliveries, better emergency response, and accurate navigation.</p>
+                <figure>
+                    <img src="./images/benefits-of-digipin.png" alt="Benefits of DIGIPIN" title="Benefits of DIGIPIN" loading="lazy" style="max-width: 100%; height: auto;">
+                    <figcaption>Benefits of DIGIPIN</figcaption>
+                </figure>
+            </section>
+            <section class="faq-section" aria-label="Frequently Asked Questions">
+              <h2>Frequently Asked Questions</h2>
+              <div class="faq">
+                <h3>How is DIGIPIN different from PINCODE?</h3>
+                <p>Unlike traditional PINCODEs that cover large postal areas and are manually assigned, a DIGIPIN is unique to each specific location - down to a few meters, enable pinpoint accuracy, making them ideal for logistics, e-commerce, emergency services and future-ready smart addressing systems.</p>
+              </div>
+            </section>
+        </article>
+    </main>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/digipin-to-lat-long">Calculate Coordinates from DIGIPIN</a>
+        <a href="/lat-long-to-digipin">Calculate DIGIPIN from Coordinates</a>
+    </nav>
+    <footer>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/privacy-policy">Privacy</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        <div id="copyright">&copy; digipin.in</div>
+    </footer>
+    <script>
+        const Spinner = document.getElementById("spinner");
+        const Result = document.getElementById("result");
+        function getdigipin() {
+            Spinner.style.display = "block";
+            Result.style.display = "none";
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showDigipin, showError, {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+        function showDigipin(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            if (!lat || !lon) {
+                alert("missing lat/long")
+            }
+
+            const DIGIPIN_GRID  = [
+                ['F','C','9','8'],
+                ['J','3','2','7'],
+                ['K','4','5','6'],
+                ['L','M','P','T']
+            ];
+
+            const BOUNDS = {
+                minLat: 2.5,
+                maxLat: 38.5,
+                minLon: 63.5,
+                maxLon: 99.5
+            };
+
+            if (lat < BOUNDS.minLat || lat > BOUNDS.maxLat) return alert("Latitude out of range")
+            if (lon < BOUNDS.minLon || lon > BOUNDS.maxLon) return alert("Longitude out of range")
+
+            let minLat = BOUNDS.minLat;
+            let maxLat = BOUNDS.maxLat;
+            let minLon = BOUNDS.minLon;
+            let maxLon = BOUNDS.maxLon;
+
+            let digiPin = "";
+
+            for (let level = 1; level <= 10; level++) {
+              const latDiv = (maxLat - minLat) / 4;
+              const lonDiv = (maxLon - minLon) / 4;
+  
+              // REVERSED row logic (to match original)
+              let row = 3 - Math.floor((lat - minLat) / latDiv);
+              let col = Math.floor((lon - minLon) / lonDiv);
+  
+              row = Math.max(0, Math.min(row, 3));
+              col = Math.max(0, Math.min(col, 3));
+  
+              digiPin += DIGIPIN_GRID[row][col];
+  
+              if (level === 3 || level === 6) digiPin += '-';
+  
+              // Update bounds (reverse logic for row)
+              maxLat = minLat + latDiv * (4 - row);
+              minLat = minLat + latDiv * (3 - row);
+  
+              minLon = minLon + lonDiv * col;
+              maxLon = minLon + lonDiv;
+            }
+            Spinner.style.display = "none";
+            Result.style.display = "block";
+            Result.innerHTML = `
+                <div style="display:flex;flex-direction:column;align-items:center">
+                    <div style="font-size:19px">📍DIGIPIN</div>
+                    <div style="display:flex;gap:10px">
+                        <div id="digipin" style="font-size:22px;font-weight:bold;background:yellow;padding-top:5px;padding-buttom:5px">${digiPin}</div> <div><button id="digipin-copy-btn" onclick="digipinCopy()">📋</button></div>
+                    </div>
+                </div>
+                <div style="display:flex;gap:10px;font-size:15px;align-items:center">
+                    <div>Latitude - </div> <div id="latitude">${String(lat).slice(0,8)}</div><div><button id="latitude-copy-btn" onclick="latitudeCopy()">📋</button></div>
+                </div>
+                <div style="display:flex;gap:10px;font-size:15px;align-items:center">
+                    <div>Longitude - </div> <div id="longitude">${String(lon).slice(0,8)}</div><div><button id="longitude-copy-btn" onclick="longitudeCopy()">📋</button></div>
+                </div>
+            `;
+            document.getElementById("copy-notification").style.display = "block"
+        }
+        function showError(error){
+            let msg = "";
+            Spinner.style.display = "none";
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    msg = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    msg = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    msg = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    msg = "An unknown error occurred."
+                    break;
+            }
+            alert(msg)
+        }
+        function showNoti(message = "Copied!"){
+            const noti = document.getElementById("copy-notification");
+            noti.style.display = "block";
+            noti.innerText = message;
+            noti.style.opacity = 1;
+
+            setTimeout(() => {
+                noti.style.opacity = 0;
+            },1500)
+        }
+        function digipinCopy() {
+            const text = document.getElementById("digipin").innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                showNoti("DIGIPIN copied: " + text);
+            })
+        }
+        function latitudeCopy() {
+            const text = document.getElementById("latitude").innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                showNoti("Latitude copied: " + text);
+            })
+        }
+        function longitudeCopy() {
+            const text = document.getElementById("longitude").innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                showNoti("Logitude copied: " + text);
+            })
+        }
+    </script>
+    <div id="copy-notification"></div>
+</body>
+</html>

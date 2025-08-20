@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lat/Lon to DIGIPIN - Get DIGIPIN from Latitude and Longitude</title>
+    <meta name="description" content="Get DIGIPIN of a Latitude and Longitude Instantly">
+    <meta name="keywords" content="digipin, digipin of latitude and longitude, lat and long to digipin, digipin of location latitude and longitude">
+    <link rel="canonical" href="https://digipin.searchpincode.in/lat-long-to-digipin">
+    <meta name="robots" content="index, follow">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        body{
+            font-family: system-ui;
+            line-height: 1.5;
+        }
+        a{
+            text-decoration: none;
+        }
+        main{
+            width: 95%;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: clamp(1.4rem, 5vw, 1.9rem);
+            margin: 1%;
+        }
+        h2 {
+            font-size: clamp(0.7rem, 5vw, 1.2rem);
+        }
+        h3{
+            font-size: clamp(0.5rem, 5vw, 1rem);
+        }
+        header{
+            background-color: rgb(128, 8, 8);
+            color: white;
+            text-align: center;
+        }
+        #logo{
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 600;
+        }
+        form{
+            line-height: 1.6;
+            font-size: 19px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form button {
+            margin-top: 0.5rem;
+            font-size: 17px;
+            padding: 3px;
+            border-radius: 8px;
+            background-color: rgb(199, 247, 103);
+            font-weight: 500;
+            cursor: pointer;
+        }
+        #spinner {
+            display: none;
+            margin: 20px auto;
+            width: 40px;
+            height: 40px;
+            border: 5px solid #ccc;
+            border-top: 5px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(360deg);}
+        }
+        #digipin-btn {
+            width: 150px;
+            height: 100px;
+            border-radius: 50%;
+            font-size: 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin: 1% auto;
+            font-weight: 800;
+        }
+        .hero {
+            font-size: 2rem;
+            margin: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: green;
+        }
+        
+        button{
+            cursor: pointer;
+        }
+        .info-card{
+            border-left: 5px solid #3522e2;
+            border-radius: 8px;
+            padding: 0.3rem;
+            margin-top: 1rem;
+        }
+        ol{
+            margin-left: 1.5rem;
+        }
+        figure{
+            max-width: 400px;
+            display: block;
+            text-align: center;
+            margin: 5px auto;
+        }
+        .faq-section{
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .faq-section h2{
+            background-color: bisque;
+            font-size: clamp(0.7rem, 5vw, 1.4rem);
+            padding: 8px;
+            border-bottom: 2px solid black;
+        }
+        nav a {
+          display: block;
+          font-size: clamp(0.6rem, 5vw, 1.2rem);
+          padding: .2rem;
+          background-color: #860f0f;
+          color: #fff;
+          text-align: center;
+          margin: .2rem 0;
+        }
+        footer{
+            background: linear-gradient(#dcf8dd,#fd8787);
+        }
+        footer ul{
+            display: flex;
+            list-style: none;
+            gap: 12px;
+            font-size: 16px;
+            justify-content: center;
+        }
+        footer ul li a{
+            color: black;
+        }
+        #copyright{
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is DIGIPIN different from PINCODE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unlike traditional PINCODEs that cover large postal areas and are manually assigned, a DIGIPIN is unique to each specific location - down to a few meters, enable pinpoint accuracy, making them ideal for logistics, e-commerce, emergency services and future-ready smart addressing systems."
+          }
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+    <header aria-label="Website header"><div id="logo">Know Your DIGIPIN</div></header>
+    <main>
+        <article>
+            <h1>Get DIGIPIN of a Latitude and Longitude</h1>
+            <form id="LatLonToDigipinForm" role="form" aria-label="Get Digipin from latitude and longitude">
+                    <div>
+                        <label for="latitude">Latitude</label>
+                        <input id="latitude" name="latitude" type="text" placeholder="latitude" required>
+                    </div>
+                    <div>
+                        <label for="longitude">Longitude</label>
+                        <input id="longitude" name="longitude" type="text" placeholder="longitude"  required>
+                    </div>
+                    <button id="search-btn" type="submit">Show DIGIPIN</button>
+            </form>
+            <div id="result"></div>
+            <section class="info-card">
+                <h2>How does Latitude and Longitude to DIGIPIN conversion works?</h2>
+                <p></p>
+            </section>
+
+            <section class="faq-section" aria-label="Frequently Asked Questions">
+              <h2>Frequently Asked Questions</h2>
+              <div class="faq">
+                <h3>How is DIGIPIN different from PINCODE?</h3>
+                <p>Unlike traditional PINCODEs that cover large postal areas and are manually assigned, a DIGIPIN is unique to each specific location - down to a few meters, enable pinpoint accuracy, making them ideal for logistics, e-commerce, emergency services and future-ready smart addressing systems.</p>
+              </div>
+            </section>
+        </article>
+    </main>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/digipin-to-lat-long">Calculate Coordinates from DIGIPIN</a>
+        <a href="/lat-long-to-digipin">Calculate DIGIPIN from Coordinates</a>
+    </nav>
+    <footer>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/privacy-policy">Privacy</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        <div id="copyright">&copy; digipin.in</div>
+    </footer>
+    <script>
+        function showDigipin(lat,lon) {
+            if (!lat || !lon) {
+                alert("missing lat/long")
+            }
+
+            const DIGIPIN_GRID  = [
+                ['F','C','9','8'],
+                ['J','3','2','7'],
+                ['K','4','5','6'],
+                ['L','M','P','T']
+            ];
+
+            const BOUNDS = {
+                minLat: 2.5,
+                maxLat: 38.5,
+                minLon: 63.5,
+                maxLon: 99.5
+            };
+
+            if (lat < BOUNDS.minLat || lat > BOUNDS.maxLat) return alert("Latitude out of range")
+            if (lon < BOUNDS.minLon || lon > BOUNDS.maxLon) return alert("Longitude out of range")
+
+            let minLat = BOUNDS.minLat;
+            let maxLat = BOUNDS.maxLat;
+            let minLon = BOUNDS.minLon;
+            let maxLon = BOUNDS.maxLon;
+
+            let digiPin = "";
+
+            for (let level = 1; level <= 10; level++) {
+              const latDiv = (maxLat - minLat) / 4;
+              const lonDiv = (maxLon - minLon) / 4;
+  
+              // REVERSED row logic (to match original)
+              let row = 3 - Math.floor((lat - minLat) / latDiv);
+              let col = Math.floor((lon - minLon) / lonDiv);
+  
+              row = Math.max(0, Math.min(row, 3));
+              col = Math.max(0, Math.min(col, 3));
+  
+              digiPin += DIGIPIN_GRID[row][col];
+  
+              if (level === 3 || level === 6) digiPin += '-';
+  
+              // Update bounds (reverse logic for row)
+              maxLat = minLat + latDiv * (4 - row);
+              minLat = minLat + latDiv * (3 - row);
+  
+              minLon = minLon + lonDiv * col;
+              maxLon = minLon + lonDiv;
+            }
+            return digiPin;
+        }
+        function validCoords(lat,lon) {
+            return ((2.5 <= lat) && (lat <= 38.5)) && ((63.5 <= lon)&&(lon <= 99.5));
+        }
+        document.getElementById("LatLonToDigipinForm").addEventListener("submit", (e) => {
+            const lat = Number(document.getElementById("latitude").value.trim());
+            const lon = Number(document.getElementById("longitude").value.trim());
+            if (!validCoords(lat,lon)) alert("Enter Valid Lat/Lon !");
+            const digiPin = showDigipin(lat, lon);
+            const Result = document.getElementById("result");
+            Result.style.display = "block";
+            Result.innerHTML = `
+                <div style="display:flex;flex-direction:column;align-items:center">
+                    <div style="font-size:19px">📍DIGIPIN</div>
+                    <div style="display:flex;gap:10px">
+                        <div id="digipin" style="font-size:22px;font-weight:bold;background:yellow;padding-top:5px;padding-buttom:5px">${digiPin}</div> <div><button id="digipin-copy-btn" onclick="digipinCopy()">📋</button></div>
+                    </div>
+                </div>
+            `;
+        })
+    </script>
+</body>
+</html>

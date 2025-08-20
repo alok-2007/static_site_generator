@@ -1,0 +1,452 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.note {
+    display: block;
+}
+
+body{
+    font-family: sans-serif
+}
+
+a {
+    color: #171732;
+    transition: color 0.2s ease-in-out;
+    text-decoration: none;
+}
+a:focus,
+a:hover {
+    color: #e02424;
+    text-decoration: underline;
+}
+
+
+.logo {
+    font-size: clamp(2.5rem, 5vw, 3rem);
+    padding-left: 10%;
+    background-color: rgb(144, 23, 23);
+    color: white;
+}
+
+.lowerer {
+    font-size: clamp(1.4em, 2vw, 1.7em);
+    margin-top: 0.3em;
+    margin-bottom: 0.2em;
+    border-bottom: 2px solid rgb(80, 72, 72);
+    background-color: rgb(200, 229, 142);
+}
+
+.lower {
+    font-size: clamp(1.3em, 2vw, 1.6em);
+    margin-top: 2em;
+    border-top: 2px solid rgb(80, 72,72);
+    background-color: rgb(213, 237, 166);
+
+}
+
+.info-card {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.backlink {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.backlink a {
+    white-space: normal;
+    font-weight: 800;
+}
+
+.backlink a:nth-of-type(odd){
+    color: #5998e6; /* Example style */
+}
+
+.backlink a:nth-of-type(even){
+    color: #bd1212;
+}
+
+#current-location-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 15px;
+    background: linear-gradient(#4999b9, rgb(152, 187, 99));
+}
+
+#current-btn{
+    background: hsl(58, 100%, 63%);
+    font-size: 18px;
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.hero {
+    display: inline-block;
+    color: #000000;
+    background-color: rgb(255, 255, 0);
+    font-size: 35px;
+    letter-spacing: 3px;
+    font-weight: 900;
+    margin: 1%;
+    padding: 5px 5px 5px 5px;
+}
+
+
+p {
+    font-size: 16px;
+    color: #333333;
+    font-family: Roboto, sans-serif;
+    text-align: justify;
+}
+
+ol {
+    padding-left: 10px;
+}
+
+ol  li {
+    font-weight: 600;
+}
+
+.orewa-red {
+    color: rgb(99, 72, 231);
+    font-weight: bold;
+}
+  
+.dt-vill {
+    width: auto; /* Allow term to take its natural width */
+    margin-right: auto; /* Push the term to the left */
+    font-size: 18px;
+}
+  
+.dd-vill {
+    width: auto; /* Allow description to take its natural width */
+    margin-left: auto; /* Push the description to the right */
+    text-align: right; /* Align the text within the description to the right */ /* Add spacing between pairs */
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.dt-vill::after {
+    content: ": ";
+}
+
+.dl-vill dt:nth-of-type(odd),
+.dl-vill dd:nth-of-type(odd) {
+    background-color: rgb(251, 251, 210); /* Yellow */
+}
+
+.dl-vill dt:nth-of-type(even),
+.dl-vill dd:nth-of-type(even) {
+    background-color: rgb(213, 221, 241); /* Blue */
+}
+
+.current-h1 {
+    text-align: center;
+    font-size: clamp(22px, 5vw, 28px);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 123 ,255, 0);
+    }
+}
+
+#banner{
+    max-width: 250px;
+    max-height: 250px;
+    margin: 1% auto;
+
+}
+
+#horizontal {
+    width: 320px;
+    height: 50px;
+    margin: 1% auto;
+}
+
+#vertical {
+    max-width: 300px;
+    max-height: 1050px;
+    margin: 2% auto;
+}
+
+.adsbygoogle {
+    max-width: 100%;
+}
+
+#current-btn-page {
+    display: block;
+    max-width: 400px; /* Optional: limits how wide it can get */
+    font-size: 28px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    animation: pulse 1s infinite;
+    transition: transform 0.3s ease;
+}
+
+#googleSearch {
+    max-width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    border: 2px solid rgb(70, 66, 66);
+}
+
+#current-location-info {
+    background: rgb(167, 107, 107);
+    margin: 1%;
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#current-loction-btn {
+    border-radius: 8px;
+    background-color: aqua;
+}
+
+#parent {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-btn {
+    font-size: 16px;
+    margin: 3px;
+    margin-top: 5px;
+    padding: 2px;
+    background-color: rgb(255, 255, 17);
+    cursor: pointer;
+}
+
+#pincode-input {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+#main {
+    margin: 1%;
+    min-height: 60vh;
+}  
+
+#hr {
+    display: none; /* hide vertical line on small screens */
+}
+
+ol {
+    padding-left: 3rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(20px, 5vw, 24px);
+    margin-top: 2em;
+}
+
+li {
+    word-wrap: break-word;
+    margin: 0.3rem 0;
+}
+
+footer nav {
+    display: flex;
+    max-width: 200px;
+    margin: 0 auto;
+    margin-bottom: 1%;
+}
+
+footer nav a {
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+
+.nav {
+    display: block;
+    font-size: clamp(15px, 5vw, 20px);
+    padding: 0.2rem;
+    background-color: rgb(142, 18, 18);
+    color: white;
+    text-align: center;
+    margin: 0.2rem 0;
+    border-radius: 8px;
+    
+}
+
+footer {
+    background: linear-gradient(rgb(185, 159, 159), rgb(238, 211, 211));
+    text-align: center;
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.postOffice-tab p {
+    padding-top: 2px;
+    padding-bottom: 3px;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #373434;
+} 
+
+.postOffice-tab p:nth-of-type(odd) {
+    background-color: #cfe8fa;
+}
+
+.postOffice-tab p:nth-of-type(even) {
+    background-color: #fcedd9;
+}
+
+.postOffice-tab p span {
+    text-align: right;
+    font-weight: bold;
+}
+
+footer p {
+    text-align: center;
+}
+
+.faq-section {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+.faq-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.faq h3 {
+    font-size: 1.1rem;
+    margin: 1rem 0 0.3rem;
+}
+.faq p {
+    margin: 0 0 1rem;
+    line-height: 1.6;
+}
+
+hr {
+    background-color: black
+}
+
+.current-card {
+    background: #f9f9f9;
+    padding: 1em;
+    border-left: 5px solid #3498db;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+.current-card h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #2c3e50;
+}
+  
+  
+
+@media screen and (min-width: 900px) {
+    
+    body{
+        background-color: #e7e7ee;
+    }
+
+    #wrap {
+        margin: 0 auto;
+        width: 900px;
+        background-color: #f6f3f1;
+    }
+
+    #current-location-info {
+        display: block;
+        text-align: center;
+        width: 400px;
+        margin: 0 auto;
+        padding: 8px;
+        margin-top: 10px;
+        border-radius: 15px;
+        background: linear-gradient(#4999b9, rgb(152, 187, 99));
+    }
+
+    .dt-vill {
+        width: auto; /* Allow term to take its natural width */
+        margin-right: auto; /* Push the term to the left */
+        font-size: 19px;
+    }
+      
+    .dd-vill {
+        width: auto; /* Allow description to take its natural width */
+        margin-left: auto; /* Push the description to the right */
+        text-align: right; /* Align the text within the description to the right */ /* Add spacing between pairs */
+        font-size: 24px;
+    }
+
+    #current-btn{
+        display: block;
+        background: hsl(58, 100%, 63%);
+        width: 250px;
+        height: 45px;
+        margin: 0 auto;
+        font-size: 19px;
+        font-family: Nunito;
+        padding: 5px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .nav {
+        font-size: clamp(17px, 5vw, 22px);
+        margin: 2px;
+    }
+
+
+    #right nav {
+        margin-top: 2%;
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+
+    #hr {
+        display: block;
+        background-color: black;
+        width: 2px;
+        margin-top: 5%;
+    }
+
+    #parent {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #main {
+        margin: 1%;
+        width: 550px;
+    }
+}

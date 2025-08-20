@@ -1,0 +1,9 @@
+name = "my-static-site"
+type = "javascript"
+
+account_id = "e24998ec6e65f30687f1c651a304b2df"
+compatibility_date = "2024-12-01"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "bucket1"

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Know Your DIGIPIN - Digital Address of Your Location</title>
+    <meta name="description" content="Get DIGIPIN of Your Location Instantly">
+    <meta name="keywords" content="digipin, digipin of my location, my digipin, digipin of my current location">
+    <link rel="canonical" href="https://digipin.searchpincode.in">
+    <meta name="robots" content="index, follow">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin: 1%;
+        }
+        header{
+            background-color: rgb(128, 8, 8);
+            color: white;
+            text-align: center;
+        }
+        #up{
+            font-size: clamp(2rem, 5vw, 2.5rem);
+        }
+        #spinner {
+            display: none;
+            margin: 20px auto;
+            width: 40px;
+            height: 40px;
+            border: 5px solid #ccc;
+            border-top: 5px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(360deg);}
+        }
+        #result {
+            display: none;
+        }
+        #digipin-btn {
+            width: 150px;
+            height: 120px;
+            border-radius: 50%;
+            font-size: 24px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin: 1% auto;
+            font-weight: 800;
+        }
+        .hero {
+            font-size: 2rem;
+            margin: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: green;
+        }
+        #result {
+            font-size: 1rem;
+            margin: 10px;
+            text-align: center;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header aria-label="Website header"><div id="up">MY DIGIPIN</div></header>
+    <main>
+        <article>
+            <h1>DIGIPIN of My Location</h1>
+            <button id="digipin-btn" onclick="getdigipin()">Show My DIGIPIN</button>
+            <div id="spinner"></div>
+            <div id="result"></div>
+
+        </article>
+    </main>
+    <footer></footer>
+    <script>
+        const Spinner = document.getElementById("spinner");
+        const Result = document.getElementById("result");
+        function getdigipin() {
+            Spinner.style.display = "block";
+            Result.style.display = "none";
+            Result.innerHTML = "";
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showDigipin, showError, {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+        async function showDigipin(position) {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            try {
+                const response = await fetch(`/api/getdigipin?lat=${lat}&lng=${lng}`);
+                const data = await response.json();
+                const { digipin } = data;
+                Spinner.style.display = "none";
+                Result.style.display = "block";
+                Result.innerHTML = `
+                    <div class="hero">${digipin}</div>
+                    <p>Your DigiPin</p>
+                    <p>Latitude: ${lat}</p>
+                    <p>longitude: ${lng}</p>
+                `;
+
+            } catch (err) {
+                console.error(err);
+                alert("Error fetching DigiPin. Please try again later.");
+                
+            }
+        }
+        function showError(error){
+            let msg = "";
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    msg = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    msg = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    msg = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    msg = "An unknown error occurred."
+                    break;
+            }
+            alert(msg)
+        }
+    </script>
+</body>
+</html>
