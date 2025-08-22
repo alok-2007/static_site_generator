@@ -232,10 +232,10 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is the PIN Code of ${name} Post Office?",
+          "name": "What is the PIN Code of ${name} Post Office in ${district}?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "The PIN Code of ${name} Post Office is ${pincode}."
+            "text": "The PIN Code of ${name}, ${district} is ${pincode}."
           }
         },
         {
@@ -261,7 +261,8 @@
         "addressRegion": "${state}",
         "postalCode": "${pincode}",
         "addressCountry": "IN"
-      }
+      },
+      "hasMap": "https://www.google.com/maps?q=${name},${district},${state}"
     }
   </script>
 </head>
@@ -293,7 +294,7 @@
       <h1>Pin Code: ${name}, ${district}, ${state}</h1>
       <p class="para">
         <strong>${name}</strong> is a ${type} Post Office located in ${district} district of ${state}, India.
-        The PIN Code of ${name} is <strong>${pincode}</strong>.
+        The PIN Code of ${name}, ${district} is <strong>${pincode}</strong>.
       </p>
       <div id="hero">
         <a href="/${pincode}">${pincode}</a>
@@ -327,6 +328,22 @@
         <dt>Circle</dt>
         <dd>${circle}</dd>
       </dl>
+
+      <section aria-label="Map of ${name}, ${district}, ${state}">
+        <h2>Map of ${name}, ${district}, ${state}</h2>
+        <div style="width: 98%; height: 300px; margin: 5px auto;">
+          <iframe
+            src="https://www.google.com/maps?q=${name},${district},${state}&output=embed"
+            height="300px"
+            width="100%"
+            style="border:0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map of ${name}, ${district}, ${state}"
+          >
+          </iframe>
+        </div>
+      </section>
     </article>
 
     <section aria-label="Other Post Offices with same PIN Code">
@@ -338,8 +355,8 @@
       <h2>Frequently Asked Questions</h2>
 
       <div class="faq">
-        <h3>What is the PIN Code of ${name} Post Office?</h3>
-        <p>The PIN Code of ${name} Post Office is <strong>${pincode}</strong>.</p>
+        <h3>What is the PIN Code of ${name} Post Office in ${district}?</h3>
+        <p>The PIN Code of ${name}, ${district} is <strong>${pincode}</strong>.</p>
       </div>
 
       <div class="faq">
